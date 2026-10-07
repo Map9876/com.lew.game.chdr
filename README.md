@@ -35,13 +35,17 @@
 > 注意：文件名里的 `baaadf4b1196f64b28a46dccf496380a` **不是** MD5，
 > 只是原始文件名。校验请用上面这个 MD5。
 
-raw 直链：
+raw 直链（**LFS 感知，返回真实安装包**）：
 
-<https://raw.githubusercontent.com/Map9876/com.lew.game.chdr/main/baaadf4b1196f64b28a46dccf496380a.apk>
+<https://media.githubusercontent.com/media/Map9876/com.lew.game.chdr/main/baaadf4b1196f64b28a46dccf496380a.apk>
 
-GitHub 网页下载（走 LFS，会重定向到 CDN）：
+GitHub 网页下载（会重定向到 CDN）：
 
 <https://github.com/Map9876/com.lew.game.chdr/raw/main/baaadf4b1196f64b28a46dccf496380a.apk>
+
+> ⚠️ 不要用 `raw.githubusercontent.com/...`：该路径对 Git LFS 文件只返回
+> 133 字节的**指针文本**（内容形如 `version https://git-lfs.github.com/spec/v1`），
+> 不是安装包。要真实内容必须用上面的 `media.githubusercontent.com/media/...`。
 
 ### 下载后务必校验
 
