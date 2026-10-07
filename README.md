@@ -24,7 +24,37 @@
 
 ## github备份下载链接：
 
-（待补）
+文件名本身就是安装包的 MD5（`baaadf4b1196f64b28a46dccf496380a`），可用它校验下载结果。
+
+raw 直链：
+
+<https://raw.githubusercontent.com/Map9876/com.lew.game.chdr/main/baaadf4b1196f64b28a46dccf496380a.apk>
+
+GitHub 网页下载（走 LFS，会重定向到 CDN）：
+
+<https://github.com/Map9876/com.lew.game.chdr/raw/main/baaadf4b1196f64b28a46dccf496380a.apk>
+
+### 下载后务必校验
+
+APK 走 Git LFS，**下载被截断时不会报错，只会得到一个打不开的文件**。
+判断方法（任选其一）：
+
+```bash
+# 1) 大小应约 50 MB，明显偏小就是残包
+ls -l baaadf4b1196f64b28a46dccf496380a.apk
+
+# 2) MD5 应与文件名一致
+md5sum baaadf4b1196f64b28a46dccf496380a.apk
+
+# 3) ZIP 结构完整（结尾记录 EOCD 必须存在）
+python3 -c "d=open('baaadf4b1196f64b28a46dccf496380a.apk','rb').read(); print('完整' if d[:4]==b'PK\x03\x04' and d.rfind(b'PK\x05\x06')>0 else '残包')"
+
+# 4) 或直接校验内部条目
+unzip -t baaadf4b1196f64b28a46dccf496380a.apk | tail -2
+```
+
+> 残包的典型特征：有 `PK\x03\x04` 开头（所以看着像压缩包），但**没有**结尾的
+> `PK\x05\x06`。这是因为 ZIP 的目录在文件末尾，被截断就没了。
 
 ## 仓库内容
 
